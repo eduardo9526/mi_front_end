@@ -1,63 +1,261 @@
-/* Importación opcional de fuente pirata/fantasía */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Roboto:wght@300;400;700&display=swap');
+/* Fuente temática de pirata / recompensa */
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Space+Grotesk:wght@300;400;700&display=swap');
 
-/* Keyframes para animaciones */
-@keyframes resplandorOro {
-    0%, 100% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 2px 2px 4px #000; }
-    50% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.9), 2px 2px 10px #ff4500; }
+/* Dynamic Variables */
+:root {
+    --bg-dark: #050508;
+    --card-bg: #0d0c12;
+    --gold: #ffd700;
+    --fire: #ff3300;
+    --ocean-glow: #00e1ff;
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
 }
 
-@keyframes flotar {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-}
-
-@keyframes pulsoBorde {
-    0%, 100% { border-color: #d4af37; box-shadow: 0 0 5px rgba(212, 175, 55, 0.2); }
-    50% { border-color: #ff4500; box-shadow: 0 0 15px rgba(255, 69, 0, 0.4); }
-}
-
-/* Estilos generales (Fondo de noche pirata / pergamino oscuro) */
+/* Base resets & Deep Space Ocean Background */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #0d0d0f;
-    background-image: radial-gradient(circle at 50% 50%, #1a1614 0%, #0d0d0f 100%);
-    color: #dcd3c8;
-    line-height: 1.6;
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--bg-dark);
+    /* Fondo oscuro con rejilla futurista y resplandor radial */
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(255, 51, 0, 0.15), transparent 70%),
+        radial-gradient(circle at 80% 80%, rgba(0, 225, 255, 0.08), transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+    color: var(--text-main);
+    line-height: 1.7;
     margin: 0;
-    padding: 20px;
+    padding: 30px 20px;
+    min-height: 100vh;
 }
 
+/* HEADER: Cartel de Recompensa Futurista / Neón */
 header {
-    background: linear-gradient(135deg, #1b120c, #2c1a0e);
-    color: #f4ecd0;
-    padding: 25px;
+    background: rgba(13, 12, 18, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 40px 20px;
     text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
-    border: 2px solid #d4af37;
+    border-radius: 16px;
     position: relative;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(255, 215, 0, 0.1);
     overflow: hidden;
 }
 
+/* Línea de luz animada pasando por el Header */
+header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 215, 0, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: sweep 6s infinite linear;
+}
+
 header h1 {
-    font-family: 'Cinzel', serif;
+    font-family: 'Rye', cursive;
     margin: 0;
-    font-size: 2.4rem;
-    color: #ffd700;
-    letter-spacing: 2px;
-    animation: resplandorOro 3s infinite ease-in-out;
+    font-size: 3rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px var(--gold), 0 0 20px var(--fire);
+    animation: flicker 4s infinite alternate;
 }
 
 header h2 {
-    margin: 10px 0 0 0;
-    font-size: 1.2rem;
-    color: #a89f91;
-    font-weight: 300;
+    margin: 15px 0 0 0;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
+/* MAIN CONTAINER: Cristal Oscuro */
 main {
-    background-color: #161210;
-    padding: 30px;
-    margin-top: 20px;
-    border-radius:
+    background: var(--card-bg);
+    padding: 40px;
+    margin-top: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+}
+
+h3, h4 {
+    font-family: 'Rye', cursive;
+    color: var(--gold);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    padding-bottom: 10px;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Icono o marca en encabezados */
+h3::before {
+    content: '☠';
+    color: var(--fire);
+    font-size: 1.2rem;
+}
+
+p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+}
+
+/* LISTAS CON PUNTOS INTERACTIVOS (LOG POSE STYLE) */
+ul, ol {
+    padding-left: 0;
+    list-style: none;
+}
+
+li {
+    position: relative;
+    padding: 12px 15px 12px 35px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+li::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--fire);
+    box-shadow: 0 0 8px var(--fire);
+    transition: all 0.3s ease;
+}
+
+li:hover {
+    background: rgba(255, 215, 0, 0.05);
+    border-color: rgba(255, 215, 0, 0.3);
+    transform: translateX(8px);
+    color: #fff;
+}
+
+li:hover::before {
+    background: var(--gold);
+    box-shadow: 0 0 12px var(--gold);
+    scale: 1.4;
+}
+
+/* IMÁGENES: Tarjetas Holográficas /wanted style */
+img {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    object-fit: cover;
+    margin: 15px 0;
+    filter: grayscale(30%) contrast(110%);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+img:hover {
+    filter: grayscale(0%) contrast(100%);
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--gold);
+    box-shadow: 0 15px 30px rgba(255, 51, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+/* SECCIONES: Contenedores con Borde Gradiente Brillante */
+section {
+    position: relative;
+    background: linear-gradient(145deg, #121018, #09080c);
+    padding: 25px;
+    border-radius: 12px;
+    margin: 25px 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--fire), var(--gold));
+}
+
+section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+/* ENLACES TIPO BOTÓN CIBERNÉTICO/PIRATA */
+a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(255, 215, 0, 0.05);
+    transition: all 0.3s ease;
+    border-bottom: 1px solid var(--gold);
+}
+
+a:hover {
+    color: #000;
+    background: var(--gold);
+    box-shadow: 0 0 15px var(--gold);
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--fire), var(--gold), transparent);
+    margin: 40px 0;
+}
+
+/* FOOTER INTERACTIVO */
+footer {
+    text-align: center;
+    background: var(--card-bg);
+    color: var(--text-muted);
+    padding: 25px;
+    margin-top: 40px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ANIMACIONES KEYFRAMES */
+@keyframes sweep {
+    0% { transform: translate(-50%, -50%) rotate(45deg); }
+    100% { transform: translate(50%, 50%) rotate(45deg); }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; text-shadow: 0 0 15px var(--fire); }
+    80% { opacity: 0.95; }
+}
