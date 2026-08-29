@@ -156,7 +156,7 @@ li:hover::before {
     scale: 1.4;
 }
 
-/* IMÁGENES: Tarjetas Holográficas /wanted style */
+/* IMÁGENES: Tarjetas Holográficas /wanted style en Movimiento */
 img {
     border-radius: 12px;
     border: 1px solid rgba(255, 215, 0, 0.2);
@@ -164,13 +164,28 @@ img {
     margin: 15px 0;
     filter: grayscale(30%) contrast(110%);
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Animación continua de flotado */
+    animation: flotarMar 4s infinite ease-in-out;
 }
 
+/* Alternancia de ritmos de movimiento para que no se muevan todas al mismo tiempo */
+img:nth-of-type(even) {
+    animation: flotarMarInverso 5s infinite ease-in-out;
+}
+
+img:nth-of-type(3n) {
+    animation: balanceoBarco 6s infinite ease-in-out;
+}
+
+/* Al pasar el cursor, se congela el movimiento continuo para enfocar */
 img:hover {
+    animation-play-state: paused;
     filter: grayscale(0%) contrast(100%);
-    transform: translateY(-8px) scale(1.02);
+    transform: scale(1.1) rotate(2deg);
     border-color: var(--gold);
-    box-shadow: 0 15px 30px rgba(255, 51, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 15px 30px rgba(255, 51, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.6);
+    cursor: pointer;
 }
 
 /* SECCIONES: Contenedores con Borde Gradiente Brillante */
@@ -258,4 +273,41 @@ footer::before {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.85; text-shadow: 0 0 15px var(--fire); }
     80% { opacity: 0.95; }
+}
+
+/* MOVIMIENTOS DE IMÁGENES (Olas del Mar Abisal) */
+@keyframes flotarMar {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-16px) rotate(2deg);
+    }
+}
+
+@keyframes flotarMarInverso {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(14px) translateX(10px) rotate(-2deg);
+    }
+}
+
+@keyframes balanceoBarco {
+    0% {
+        transform: translateY(0px) rotate(-1deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(-1deg);
+    }
+    75% {
+        transform: translateY(-5px) rotate(2deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(-1deg);
+    }
 }
