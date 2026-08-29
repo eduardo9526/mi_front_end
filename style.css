@@ -1,111 +1,63 @@
-/* Estilos generales con temática de One Piece (pergamino, madera y mar) */
+/* Importación opcional de fuente pirata/fantasía */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Roboto:wght@300;400;700&display=swap');
+
+/* Keyframes para animaciones */
+@keyframes resplandorOro {
+    0%, 100% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 2px 2px 4px #000; }
+    50% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.9), 2px 2px 10px #ff4500; }
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes pulsoBorde {
+    0%, 100% { border-color: #d4af37; box-shadow: 0 0 5px rgba(212, 175, 55, 0.2); }
+    50% { border-color: #ff4500; box-shadow: 0 0 15px rgba(255, 69, 0, 0.4); }
+}
+
+/* Estilos generales (Fondo de noche pirata / pergamino oscuro) */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4ecd0;
-    color: #2c221e;
+    font-family: 'Roboto', sans-serif;
+    background-color: #0d0d0f;
+    background-image: radial-gradient(circle at 50% 50%, #1a1614 0%, #0d0d0f 100%);
+    color: #dcd3c8;
     line-height: 1.6;
     margin: 0;
     padding: 20px;
 }
 
 header {
-    background: linear-gradient(135deg, #8b4513, #a0522d);
+    background: linear-gradient(135deg, #1b120c, #2c1a0e);
     color: #f4ecd0;
     padding: 25px;
     text-align: center;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border: 3px solid #d4af37;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    border: 2px solid #d4af37;
+    position: relative;
+    overflow: hidden;
 }
 
 header h1 {
+    font-family: 'Cinzel', serif;
     margin: 0;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     color: #ffd700;
-    text-shadow: 2px 2px #000;
+    letter-spacing: 2px;
+    animation: resplandorOro 3s infinite ease-in-out;
 }
 
 header h2 {
     margin: 10px 0 0 0;
-    font-size: 1.4rem;
-    font-weight: normal;
+    font-size: 1.2rem;
+    color: #a89f91;
+    font-weight: 300;
 }
 
 main {
-    background-color: #fffaf0;
+    background-color: #161210;
     padding: 30px;
     margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid #deb887;
-}
-
-h3, h4 {
-    color: #8b4513;
-    border-bottom: 2px solid #deb887;
-    padding-bottom: 5px;
-}
-
-p {
-    font-size: 1.05rem;
-}
-
-ul, ol {
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 12px;
-}
-
-img {
-    border-radius: 6px;
-    border: 2px solid #8b4513;
-    object-fit: cover;
-    margin: 10px 0;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-}
-
-img:hover {
-    transform: scale(1.05);
-}
-
-section {
-    background-color: #fdf5e6;
-    padding: 15px 20px;
-    border-radius: 6px;
-    border-left: 5px solid #d4af37;
-}
-
-a {
-    color: #b22222;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-a:hover {
-    color: #ff4500;
-    text-decoration: underline;
-}
-
-hr {
-    border: 0;
-    height: 2px;
-    background: #d4af37;
-    margin: 25px 0;
-}
-
-footer {
-    text-align: center;
-    background-color: #2c221e;
-    color: #f4ecd0;
-    padding: 20px;
-    margin-top: 30px;
-    border-radius: 8px;
-    border: 2px solid #d4af37;
-}
-
-footer p {
-    margin: 5px 0;
-}
+    border-radius:
